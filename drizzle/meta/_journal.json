@@ -8,6 +8,13 @@
       "when": 1791853634231,
       "tag": "0000_init",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1791854362374,
+      "tag": "0001_sandbox_trips",
+      "breakpoints": true
     }
   ]
 }

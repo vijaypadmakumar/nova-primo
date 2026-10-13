@@ -3,6 +3,7 @@ import { signUp } from "./helpers";
 
 test("sign in rejects a wrong mobile number", async ({ page }) => {
   await page.goto("/login");
+  await page.getByText("Sign in with your mobile number").click();
   await page.getByLabel("Mobile number").fill("12345");
   await page.getByRole("button", { name: "Send code" }).click();
   await expect(page.getByText("Please enter a valid 10-digit mobile number.")).toBeVisible();

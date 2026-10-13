@@ -9,23 +9,30 @@ import { requireOffice } from "@/lib/auth/session";
 import { formatDate, formatRupees, formatTonnes } from "@/lib/format";
 import { getLoad } from "@/lib/loads";
 import { formatIndianMobile } from "@/lib/phone";
+import { joinableTrips, getTrip, vehicleAndDriverOptions } from "@/lib/trips";
 import { toggleCancelled } from "../actions";
+import { AssignTruckForm } from "../AssignTruckForm";
+import { TripPanel } from "../TripPanel";
 
 export default async function LoadDetailPage({
   params,
   searchParams,
 }: {
   params: Promise<{ id: string }>;
-  searchParams: Promise<{ created?: string }>;
+  searchParams: Promise<{ created?: string; assigned?: string }>;
 }) {
   const { id } = await params;
-  const { created } = await searchParams;
+  const { created, assigned } = await searchParams;
   const { office } = await requireOffice();
   const found = await getLoad(office.id, id).catch(() => null);
   if (!found) notFound();
   const { load, shipperName, shipperPhone } = found;
 
   const t = await getTranslations("loads");
+  const ttrip = await getTranslations("trip");
+  const trip = load.tripId ? await getTrip(office.id, load.tripId) : null;
+  const options = load.stage === "open" ? await vehicleAndDriverOptions(office.id) : null;
+  const trips = load.stage === "open" ? await joinableTrips(office.id) : [];
   const tt = await getTranslations("truckTypes");
   const canEdit = load.stage === "open" || load.stage === "assigned";
 
@@ -53,14 +60,14 @@ export default async function LoadDetailPage({
         }
       />
 
-      {created && (
+      {(created || assigned) && (
         <div className="mb-4">
-          <Notice tone="good">{t("created", { no: load.loadNo })}</Notice>
+          <Notice tone="good">{created ? t("created", { no: load.loadNo }) : ttrip("assignedNotice")}</Notice>
         </div>
       )}
 
-      <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
-        <Panel className="lg:col-span-2">
+      <div className="grid grid-cols-1 items-start gap-4 lg:grid-cols-2">
+        <Panel>
           <p className="text-2xl font-bold">
             {load.fromPlace} → {load.toPlace}
           </p>
@@ -85,17 +92,28 @@ export default async function LoadDetailPage({
           />
         </Panel>
 
-        <Panel>
-          <h2 className="text-lg font-bold">{t("truckTitle")}</h2>
-          <p className="mt-2 text-muted">{t("truckComingSoon")}</p>
-          {(load.stage === "open" || load.stage === "cancelled") && (
-            <form action={toggleCancelled.bind(null, load.id)} className="mt-6 border-t border-line pt-4">
-              <SubmitButton variant={load.stage === "open" ? "danger" : "secondary"}>
-                {load.stage === "open" ? t("cancelLoad") : t("reopenLoad")}
-              </SubmitButton>
-            </form>
-          )}
-        </Panel>
+        {trip ? (
+          <TripPanel load={load} trip={trip} />
+        ) : (
+          <Panel>
+            <h2 className="mb-1 text-lg font-bold">{ttrip("fixTruckTitle")}</h2>
+            {options ? (
+              <>
+                <p className="mb-4 text-muted">{ttrip("fixTruckIntro")}</p>
+                <AssignTruckForm loadId={load.id} vehicles={options.vehicles} drivers={options.drivers} trips={trips} />
+              </>
+            ) : (
+              <p className="text-muted">{ttrip("noTruckCancelled")}</p>
+            )}
+            {(load.stage === "open" || load.stage === "cancelled") && (
+              <form action={toggleCancelled.bind(null, load.id)} className="mt-6 border-t border-line pt-4">
+                <SubmitButton variant={load.stage === "open" ? "danger" : "secondary"}>
+                  {load.stage === "open" ? t("cancelLoad") : t("reopenLoad")}
+                </SubmitButton>
+              </form>
+            )}
+          </Panel>
+        )}
       </div>
     </>
   );

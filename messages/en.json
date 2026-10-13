@@ -14,10 +14,11 @@
     "masters": "Masters",
     "settings": "Settings",
     "signedInAs": "Signed in as {name}",
-    "signOut": "Sign out"
+    "signOut": "Sign out",
+    "connections": "Connections"
   },
   "login": {
-    "title": "Sign in",
+    "title": "Sign in with your mobile number",
     "intro": "Enter your mobile number. We will send you a 6-digit code.",
     "phoneLabel": "Mobile number",
     "phoneHint": "10-digit Indian mobile number",
@@ -65,7 +66,11 @@
     "invalidAmount": "Enter an amount in rupees, like 45000.",
     "invalidDate": "Please choose a date.",
     "chooseShipper": "Please choose a party.",
-    "duplicateVehicle": "This vehicle number is already in your masters."
+    "duplicateVehicle": "This vehicle number is already in your masters.",
+    "chooseVehicle": "Please choose a vehicle.",
+    "chooseDriver": "Please choose a driver.",
+    "chooseTrip": "Please choose a truck.",
+    "advanceTooHigh": "Advance cannot be more than the truck hire."
   },
   "languages": {
     "hi": "Hindi",
@@ -239,7 +244,18 @@
     "noneToday": "No loads for loading today.",
     "recent": "Latest loads",
     "seeAll": "See all loads",
-    "firstLoad": "No loads yet. Start by booking your first load."
+    "firstLoad": "No loads yet. Start by booking your first load.",
+    "resetDone": "The demo is back to its starting sample data.",
+    "moneyTitle": "This month's money",
+    "money": {
+      "freight": "Freight from parties",
+      "hire": "Truck hire paid out: {amount}",
+      "margin": "Your margin",
+      "marginHint": "Party freight minus truck hire",
+      "toCollect": "To collect from parties",
+      "toPay": "To pay truck owners: {amount}"
+    },
+    "podMissing": "{count, plural, one {# delivered trip is} other {# delivered trips are}} still waiting for the POD photo."
   },
   "settings": {
     "title": "Settings",
@@ -256,6 +272,100 @@
       "create": "Create a new entry on a list screen",
       "save": "Save the form (Accept)",
       "back": "Go back to the previous screen"
+    }
+  },
+  "demo": {
+    "title": "See how it works",
+    "intro": "Open a demo office with sample parties, trucks and loads. Try booking a load, fixing a truck and following the driver. Nothing is sent to anyone.",
+    "start": "Try the demo",
+    "opening": "Opening the demo…",
+    "agentName": "Ravi",
+    "banner": "Demo mode: sample data only. No messages are sent.",
+    "reset": "Start the demo again",
+    "driverViewTitle": "Demo: the driver's phone",
+    "driverViewNote": "This is what the driver sees after opening the WhatsApp link, in {language}. Tap the buttons as the driver would.",
+    "driverViewFallback": "(Shown in Hindi until this language is added.)",
+    "backToLoad": "Back to the load"
+  },
+  "trip": {
+    "fixTruckTitle": "Fix a truck",
+    "fixTruckIntro": "Choose the truck and driver, and the hire agreed with the owner.",
+    "noTruckCancelled": "This load is cancelled.",
+    "assignHow": "How to fix the truck",
+    "mode": {
+      "new": "New truck",
+      "existing": "Truck already fixed"
+    },
+    "vehicle": "Vehicle",
+    "newVehicle": "+ Create a new vehicle",
+    "driver": "Driver",
+    "truckHire": "Truck hire",
+    "advance": "Advance to owner",
+    "existingTrip": "Truck already fixed for another load",
+    "existingTripHint": "Use this when one truck carries goods for more than one party.",
+    "fixTruck": "Fix truck",
+    "assignedNotice": "Truck fixed. The driver gets the trip link on WhatsApp.",
+    "truckAndDriver": "Truck and driver",
+    "openDriverView": "Open driver's phone",
+    "sharedTruck": "This truck also carries:",
+    "loadOf": "Load {no} · {party}",
+    "whatsappPreview": "WhatsApp message to the driver",
+    "whatsappNote": "Demo: not actually sent.",
+    "removeTruck": "Remove this truck",
+    "progress": "Trip progress",
+    "waiting": "Waiting",
+    "status": {
+      "reached_pickup": "Reached loading point",
+      "loaded": "Loading done",
+      "departed": "Left for delivery",
+      "reached_drop": "Reached unloading point",
+      "unloaded": "Unloading done"
+    },
+    "papers": "Papers from the driver",
+    "doc": {
+      "lr": "LR (bilty)",
+      "eway_bill": "E-way bill",
+      "pod": "Signed POD"
+    },
+    "receivedAt": "Received {time}",
+    "notYet": "Not yet",
+    "money": "Money",
+    "partyFreight": "Party freight ({count, plural, one {# load} other {# loads}} on this truck)",
+    "yourMargin": "Your margin",
+    "advancePaid": "Advance paid to owner",
+    "ownerBalance": "Balance due to owner",
+    "partyToPay": "This party still to pay",
+    "paid": "Paid",
+    "markPartyPaid": "Party has paid",
+    "markOwnerPaid": "Owner balance paid",
+    "payAfterDelivery": "Payments can be marked after delivery."
+  },
+  "connections": {
+    "title": "Connections",
+    "subtitle": "Which parties and drivers work together through you.",
+    "views": {
+      "map": "Map",
+      "parties": "By party",
+      "drivers": "By driver"
+    },
+    "empty": "No loads yet. Connections appear once trucks are fixed.",
+    "mapIntro": "Each line joins a party to a driver who carried their goods. Thicker lines mean more loads.",
+    "mapNote": "One party can use many drivers, and one driver can carry goods for many parties.",
+    "partiesHeading": "Parties",
+    "driversHeading": "Drivers",
+    "pairTitle": "{count, plural, one {# load} other {# loads}}",
+    "loadsCount": "{count, plural, one {# load} other {# loads}}",
+    "col": {
+      "party": "Party",
+      "loads": "Loads",
+      "running": "Running",
+      "driversUsed": "Drivers used",
+      "freight": "Freight",
+      "toCollect": "To collect",
+      "driver": "Driver",
+      "owner": "Truck owner",
+      "vehicles": "Vehicles",
+      "partiesServed": "Parties served"
     }
   }
 }
