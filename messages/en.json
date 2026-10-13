@@ -1,0 +1,261 @@
+{
+  "common": {
+    "appName": "Nova Primo",
+    "choose": "Choose…",
+    "save": "Save",
+    "saving": "Saving…",
+    "cancel": "Cancel",
+    "search": "Search"
+  },
+  "nav": {
+    "appName": "Nova Primo",
+    "home": "Home",
+    "loads": "Loads",
+    "masters": "Masters",
+    "settings": "Settings",
+    "signedInAs": "Signed in as {name}",
+    "signOut": "Sign out"
+  },
+  "login": {
+    "title": "Sign in",
+    "intro": "Enter your mobile number. We will send you a 6-digit code.",
+    "phoneLabel": "Mobile number",
+    "phoneHint": "10-digit Indian mobile number",
+    "sending": "Sending…",
+    "sendCode": "Send code",
+    "verifyTitle": "Enter the code",
+    "verifyIntro": "We sent a 6-digit code to {phone}.",
+    "changeNumber": "Change number",
+    "testModeCode": "Test mode, no SMS is sent. Your code is",
+    "codeLabel": "6-digit code",
+    "checking": "Checking…",
+    "signIn": "Sign in",
+    "resend": "Send a new code",
+    "errors": {
+      "invalidPhone": "Please enter a valid 10-digit mobile number.",
+      "tooSoon": "Please wait 30 seconds before asking for another code.",
+      "tooMany": "Too many codes asked for. Please try again after an hour.",
+      "smsFailed": "We could not send the SMS. Please try again.",
+      "code_expired": "This code has expired. Ask for a new code.",
+      "code_wrong": "That code is not correct. Please check and try again.",
+      "code_locked": "Too many wrong tries. Ask for a new code."
+    },
+    "notices": {
+      "resent": "A new code has been sent."
+    }
+  },
+  "onboarding": {
+    "title": "Set up your office",
+    "intro": "Just two details to start. You can change them later in Settings.",
+    "yourName": "Your name",
+    "officeName": "Office name",
+    "officeNameHint": "For example: Sri Balaji Transport",
+    "city": "City",
+    "saving": "Saving…",
+    "start": "Start"
+  },
+  "validation": {
+    "required": "This is required.",
+    "tooLong": "This is too long.",
+    "invalidPhone": "Enter a 10-digit mobile number, or leave it blank.",
+    "invalidChoice": "Please choose from the list.",
+    "invalidGstin": "GSTIN should be 15 letters and numbers, like 29ABCDE1234F1Z5.",
+    "invalidVehicleNumber": "Enter the number as on the RC, like KA01AB1234.",
+    "invalidNumber": "Enter a number, like 9 or 9.5.",
+    "invalidAmount": "Enter an amount in rupees, like 45000.",
+    "invalidDate": "Please choose a date.",
+    "chooseShipper": "Please choose a party.",
+    "duplicateVehicle": "This vehicle number is already in your masters."
+  },
+  "languages": {
+    "hi": "Hindi",
+    "en": "English",
+    "ta": "Tamil",
+    "te": "Telugu",
+    "kn": "Kannada",
+    "ml": "Malayalam",
+    "mr": "Marathi",
+    "bn": "Bengali",
+    "pa": "Punjabi",
+    "gu": "Gujarati"
+  },
+  "truckTypes": {
+    "open_body": "Open body",
+    "container": "Container",
+    "trailer": "Trailer",
+    "tipper": "Tipper",
+    "tanker": "Tanker",
+    "reefer": "Reefer (cold)",
+    "lcv": "Small truck (LCV)"
+  },
+  "stages": {
+    "open": "Truck needed",
+    "assigned": "Truck fixed",
+    "in_transit": "On the way",
+    "delivered": "Delivered",
+    "closed": "Closed",
+    "cancelled": "Cancelled"
+  },
+  "masters": {
+    "title": "Masters",
+    "subtitle": "Parties, truck owners, drivers and vehicles you work with.",
+    "kinds": {
+      "shippers": "Parties (shippers)",
+      "owners": "Truck owners",
+      "drivers": "Drivers",
+      "vehicles": "Vehicles"
+    },
+    "about": {
+      "shippers": "Companies and traders who give you loads.",
+      "owners": "People whose trucks carry your loads.",
+      "drivers": "Drivers, with the language they read best.",
+      "vehicles": "Trucks by number, type and owner."
+    },
+    "display": "Display",
+    "create": "Create",
+    "createOne": {
+      "shippers": "Create party",
+      "owners": "Create truck owner",
+      "drivers": "Create driver",
+      "vehicles": "Create vehicle"
+    },
+    "editOne": {
+      "shippers": "Edit party",
+      "owners": "Edit truck owner",
+      "drivers": "Edit driver",
+      "vehicles": "Edit vehicle"
+    },
+    "empty": {
+      "shippers": "No parties yet. Create your first party to start booking loads.",
+      "owners": "No truck owners yet.",
+      "drivers": "No drivers yet.",
+      "vehicles": "No vehicles yet."
+    },
+    "noMatch": "Nothing matches your search.",
+    "searchPlaceholder": "Search by name, city or phone",
+    "edit": "Edit",
+    "fields": {
+      "name": "Name",
+      "contactPerson": "Contact person",
+      "phone": "Mobile number",
+      "city": "City",
+      "gstin": "GSTIN",
+      "notes": "Notes",
+      "ownerId": "Truck owner",
+      "language": "Language",
+      "number": "Vehicle number",
+      "truckType": "Truck type",
+      "capacity": "Capacity (tonnes)"
+    },
+    "hints": {
+      "shippers": {
+        "name": "Company or trader name, as you call them",
+        "gstin": "Optional"
+      },
+      "drivers": {
+        "phone": "The trip link will be sent to this number",
+        "language": "Trip details are shown to the driver in this language"
+      },
+      "vehicles": {
+        "number": "As on the RC, like KA01AB1234",
+        "capacity": "For example 9 or 16"
+      }
+    },
+    "noOwner": "Not set",
+    "shipperLoads": "Loads from this party ({count})",
+    "newLoadForShipper": "New load for this party",
+    "noLoadsYet": "No loads from this party yet.",
+    "noneYet": "None yet."
+  },
+  "loads": {
+    "title": "Loads",
+    "subtitle": "Every load, from booking to closing.",
+    "newLoad": "New load",
+    "newLoadIntro": "Fill what you know now. You can edit it later.",
+    "stageFilter": "Show loads by stage",
+    "tabs": {
+      "active": "Running",
+      "all": "All"
+    },
+    "searchPlaceholder": "Search party, place, goods or load no.",
+    "noMatch": "No loads match your search.",
+    "empty": "No loads here yet.",
+    "col": {
+      "no": "Load No.",
+      "date": "Loading date",
+      "shipper": "Party",
+      "route": "From → To",
+      "goods": "Goods",
+      "freight": "Freight",
+      "stage": "Stage"
+    },
+    "loadNo": "Load {no}",
+    "section": {
+      "party": "Party",
+      "route": "Route and date",
+      "goods": "Goods and truck",
+      "money": "Freight"
+    },
+    "fields": {
+      "shipper": "Party (shipper)",
+      "fromPlace": "From",
+      "toPlace": "To",
+      "loadingDate": "Loading date",
+      "material": "Goods",
+      "weight": "Weight (tonnes)",
+      "truckType": "Truck type",
+      "freight": "Party freight",
+      "notes": "Notes"
+    },
+    "hints": {
+      "weight": "For example 9 or 9.5",
+      "freight": "Total freight agreed with the party, in rupees"
+    },
+    "newShipper": "+ Create a new party",
+    "chooseShipper": "Choose party…",
+    "savedRoutes": "This party's usual routes. Tap one to fill it in:",
+    "saveLoad": "Save load",
+    "editLoad": "Edit load",
+    "created": "Load {no} is saved.",
+    "loadingOn": "Loading on {date}",
+    "shipperPhone": "Party mobile",
+    "truckTitle": "Truck",
+    "truckComingSoon": "No truck fixed yet. Fixing a truck and sending the driver link come in the next update.",
+    "cancelLoad": "Cancel this load",
+    "reopenLoad": "Open this load again"
+  },
+  "home": {
+    "greeting": "Namaste, {name}",
+    "today": "Today is {date}",
+    "newLoad": "New load",
+    "newShipper": "Create party",
+    "tileHint": {
+      "open": "Loads waiting for a truck",
+      "assigned": "Truck fixed, not loaded",
+      "in_transit": "Trucks on the road",
+      "delivered": "Waiting for POD and payment"
+    },
+    "todaysLoading": "Loading today",
+    "noneToday": "No loads for loading today.",
+    "recent": "Latest loads",
+    "seeAll": "See all loads",
+    "firstLoad": "No loads yet. Start by booking your first load."
+  },
+  "settings": {
+    "title": "Settings",
+    "office": "Office",
+    "officeName": "Office name",
+    "city": "City",
+    "yourName": "Your name",
+    "saved": "Saved.",
+    "signedInPhone": "Signed in with {phone}",
+    "language": "Language",
+    "languageHint": "Choose the language for your screens. Each person can choose their own.",
+    "shortcuts": "Keyboard shortcuts",
+    "keys": {
+      "create": "Create a new entry on a list screen",
+      "save": "Save the form (Accept)",
+      "back": "Go back to the previous screen"
+    }
+  }
+}
