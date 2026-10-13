@@ -1,0 +1,54 @@
+@import "tailwindcss";
+
+/*
+ * Light, high-contrast theme for people who work long hours on a desktop or
+ * phone: large type, clear borders, one calm accent colour (Tally-like teal).
+ */
+@theme {
+  --font-sans: "Segoe UI", system-ui, -apple-system, Roboto, "Noto Sans", "Noto Sans Devanagari", "Helvetica Neue", Arial, sans-serif;
+
+  --color-page: #f5f7f8;
+  --color-panel: #ffffff;
+  --color-ink: #1d2a33;
+  --color-muted: #55636d;
+  --color-line: #cfd8de;
+  --color-line-strong: #9aa9b3;
+
+  --color-brand: #0f6e78;
+  --color-brand-dark: #0a535b;
+  --color-brand-soft: #e3f2f3;
+
+  --color-good: #1d7a3e;
+  --color-good-soft: #e6f4ea;
+  --color-warn: #8a5a00;
+  --color-warn-soft: #fdf3dc;
+  --color-bad: #b42318;
+  --color-bad-soft: #fdecea;
+}
+
+html {
+  font-size: 17px;
+}
+
+body {
+  background: var(--color-page);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Visible focus ring everywhere: many users move through forms with the keyboard. */
+:focus-visible {
+  outline: 3px solid var(--color-brand);
+  outline-offset: 2px;
+}
+
+input,
+select,
+textarea {
+  font-size: 1rem;
+}
+
+table {
+  font-variant-numeric: tabular-nums;
+}
