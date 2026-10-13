@@ -1,6 +1,7 @@
 import { getTranslations } from "next-intl/server";
 import { signOut } from "@/app/login/actions";
-import { BookIcon, GearIcon, HomeIcon, TruckIcon } from "@/components/icons";
+import { DemoBanner } from "@/components/DemoBanner";
+import { BookIcon, GearIcon, HomeIcon, LinkIcon, TruckIcon } from "@/components/icons";
 import { LanguageSwitch } from "@/components/LanguageSwitch";
 import { BottomNav, SideNav, type NavItem } from "@/components/NavLinks";
 import { requireOffice } from "@/lib/auth/session";
@@ -12,6 +13,7 @@ export default async function AppLayout({ children }: { children: React.ReactNod
   const items: NavItem[] = [
     { href: "/", label: t("home"), icon: <HomeIcon /> },
     { href: "/loads", label: t("loads"), icon: <TruckIcon /> },
+    { href: "/connections", label: t("connections"), icon: <LinkIcon /> },
     { href: "/masters", label: t("masters"), icon: <BookIcon /> },
     { href: "/settings", label: t("settings"), icon: <GearIcon /> },
   ];
@@ -27,6 +29,7 @@ export default async function AppLayout({ children }: { children: React.ReactNod
       </aside>
 
       <div className="flex min-w-0 flex-1 flex-col">
+        {office.isDemo && <DemoBanner />}
         <header className="flex items-center justify-between gap-3 border-b border-line bg-panel px-4 py-3 md:px-8">
           <p className="truncate font-bold md:hidden">{office.name}</p>
           <p className="hidden text-muted md:block">{t("signedInAs", { name: user.name ?? "" })}</p>

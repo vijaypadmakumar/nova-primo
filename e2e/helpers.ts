@@ -8,6 +8,7 @@ export function randomMobile() {
 /** Signs in with the on-screen test code and sets up a new office. */
 export async function signUp(page: Page, { name = "Ravi", office = "Sri Balaji Transport" } = {}) {
   await page.goto("/login");
+  await page.getByText("Sign in with your mobile number").click();
   await page.getByLabel("Mobile number").fill(randomMobile());
   await page.getByRole("button", { name: "Send code" }).click();
 

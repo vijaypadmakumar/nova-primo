@@ -38,7 +38,7 @@ export function SideNav({ items }: { items: NavItem[] }) {
 export function BottomNav({ items }: { items: NavItem[] }) {
   const pathname = usePathname();
   return (
-    <nav className="fixed inset-x-0 bottom-0 z-10 grid grid-cols-4 border-t border-line bg-panel md:hidden">
+    <nav className="fixed inset-x-0 bottom-0 z-10 grid grid-cols-5 border-t border-line bg-panel md:hidden">
       {items.map((item) => {
         const active = isActive(pathname, item.href);
         return (
@@ -46,7 +46,7 @@ export function BottomNav({ items }: { items: NavItem[] }) {
             key={item.href}
             href={item.href}
             aria-current={active ? "page" : undefined}
-            className={`flex min-h-16 flex-col items-center justify-center gap-0.5 text-sm font-semibold ${
+            className={`flex min-h-16 flex-col items-center justify-center gap-0.5 text-[13px] font-semibold leading-tight ${
               active ? "text-brand" : "text-muted"
             }`}
           >

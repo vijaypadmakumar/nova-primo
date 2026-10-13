@@ -4,8 +4,20 @@ A web app for lorry booking agents in India. The agent records each load from a
 party (shipper), fixes a truck, and follows the trip to payment. Shippers and
 drivers will only ever need a link.
 
-This first part covers sign-in, the office, masters (parties, truck owners,
-drivers, vehicles) and loads with a load board. Screens are in English and Hindi.
+Right now it is built as a **demo sandbox** to show agents what switching would
+give them. "Try the demo" on the sign-in screen opens a fresh office full of
+sample parties, trucks and loads in every stage. In it an agent can:
+
+- book a load and see it on the load board
+- fix a truck (new, or one already carrying another party's goods)
+- see the WhatsApp message the driver would get, in the driver's language
+- open the driver's phone view and tap through loading, travel, unloading and papers
+- see each trip's margin, and money to collect from parties and pay to owners
+- see the connections between parties and drivers
+- start the demo again at any time
+
+Nothing is sent from the demo: no SMS, no WhatsApp, no real links. Screens are
+in English and Hindi; the driver's page also has Kannada, Tamil and Punjabi.
 
 ## Run it on your computer
 

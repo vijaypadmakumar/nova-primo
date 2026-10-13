@@ -1,5 +1,6 @@
 import {
   bigint,
+  boolean,
   date,
   index,
   integer,
@@ -21,6 +22,8 @@ export const offices = pgTable("offices", {
   city: text("city"),
   /** Last load number issued, used to number loads 1, 2, 3… per office. */
   loadSeq: integer("load_seq").notNull().default(0),
+  /** Demo sandbox filled with sample data; nothing is ever sent from it. */
+  isDemo: boolean("is_demo").notNull().default(false),
   createdAt: createdAt(),
 });
 
@@ -129,6 +132,65 @@ export const vehicles = pgTable(
   ],
 );
 
+/** One truck journey. A trip can carry loads from more than one party. */
+export const trips = pgTable(
+  "trips",
+  {
+    id: id(),
+    officeId: uuid("office_id")
+      .notNull()
+      .references(() => offices.id),
+    vehicleId: uuid("vehicle_id")
+      .notNull()
+      .references(() => vehicles.id),
+    driverId: uuid("driver_id")
+      .notNull()
+      .references(() => drivers.id),
+    /** Truck hire agreed with the owner for the whole trip, in paise. */
+    truckFreightPaise: bigint("truck_freight_paise", { mode: "number" }),
+    advancePaise: bigint("advance_paise", { mode: "number" }),
+    ownerPaidAt: timestamp("owner_paid_at", { withTimezone: true }),
+    createdAt: createdAt(),
+  },
+  (t) => [
+    index("trips_office_idx").on(t.officeId),
+    index("trips_driver_idx").on(t.driverId),
+  ],
+);
+
+export const TRIP_STATUSES = ["reached_pickup", "loaded", "departed", "reached_drop", "unloaded"] as const;
+export type TripStatus = (typeof TRIP_STATUSES)[number];
+
+export const tripEvents = pgTable(
+  "trip_events",
+  {
+    id: id(),
+    tripId: uuid("trip_id")
+      .notNull()
+      .references(() => trips.id, { onDelete: "cascade" }),
+    status: text("status").$type<TripStatus>().notNull(),
+    at: timestamp("at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => [index("trip_events_trip_idx").on(t.tripId, t.at)],
+);
+
+export const DOCUMENT_TYPES = ["lr", "eway_bill", "pod"] as const;
+export type DocumentType = (typeof DOCUMENT_TYPES)[number];
+
+/** Papers received for a trip. In the demo these stand in for photos. */
+export const tripDocuments = pgTable(
+  "trip_documents",
+  {
+    id: id(),
+    tripId: uuid("trip_id")
+      .notNull()
+      .references(() => trips.id, { onDelete: "cascade" }),
+    type: text("type").$type<DocumentType>().notNull(),
+    at: timestamp("at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => [uniqueIndex("trip_documents_trip_type_idx").on(t.tripId, t.type)],
+);
+
 export const LOAD_STAGES = [
   "open",
   "assigned",
@@ -159,6 +221,8 @@ export const loads = pgTable(
     /** Freight agreed with the shipper, in paise. */
     shipperFreightPaise: bigint("shipper_freight_paise", { mode: "number" }),
     stage: text("stage").$type<LoadStage>().notNull().default("open"),
+    tripId: uuid("trip_id").references(() => trips.id),
+    partyPaidAt: timestamp("party_paid_at", { withTimezone: true }),
     notes: text("notes"),
     createdBy: uuid("created_by").references(() => users.id),
     createdAt: createdAt(),
@@ -170,6 +234,7 @@ export const loads = pgTable(
     uniqueIndex("loads_office_no_idx").on(t.officeId, t.loadNo),
     index("loads_office_stage_idx").on(t.officeId, t.stage),
     index("loads_shipper_idx").on(t.shipperId),
+    index("loads_trip_idx").on(t.tripId),
   ],
 );
 
@@ -180,3 +245,4 @@ export type Owner = typeof owners.$inferSelect;
 export type Driver = typeof drivers.$inferSelect;
 export type Vehicle = typeof vehicles.$inferSelect;
 export type Load = typeof loads.$inferSelect;
+export type Trip = typeof trips.$inferSelect;
